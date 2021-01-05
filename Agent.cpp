@@ -79,7 +79,9 @@ void Agent::parallel_running(bool block_flag) {
     std::vector<std::vector<int>> optional_actions;//all actions to approach to the goal.
     std::vector<std::vector<int>> rand_less;//all actions to approach to the goal.
     if(lean_step>0){
-        optional_actions.push_back({pos_x+x_direct,pos_y+y_direct});
+        if(pos_x+x_direct>=0 && pos_x+x_direct<width && pos_y+y_direct>=0 && pos_y+y_direct<height) {
+            optional_actions.push_back({pos_x + x_direct, pos_y + y_direct});
+        }
         if(pos_x-x_direct>=0 && pos_x-x_direct<width)
             rand_less.push_back({pos_x-x_direct,pos_y+y_direct});
         if(pos_y-y_direct>=0 && pos_y-y_direct<height)
@@ -98,7 +100,9 @@ void Agent::parallel_running(bool block_flag) {
     }
 
     if(x_step>0){
-        optional_actions.push_back({pos_x+x_direct,pos_y});
+        if(pos_x+x_direct>=0 && pos_x+x_direct<width) {
+            optional_actions.push_back({pos_x + x_direct, pos_y});
+        }
         if(pos_x-x_direct>=0 && pos_x-x_direct<width)
             rand_less.push_back({pos_x-x_direct,pos_y});
     }else{
@@ -108,7 +112,9 @@ void Agent::parallel_running(bool block_flag) {
             rand_less.push_back({pos_x-1,pos_y});
     }
     if(y_step>0){
-        optional_actions.push_back({pos_x, pos_y+y_direct});
+        if(pos_y+y_direct>=0 && pos_y+y_direct<height) {
+            optional_actions.push_back({pos_x, pos_y + y_direct});
+        }
         if(pos_y-y_direct>=0 && pos_y-y_direct<height)
             rand_less.push_back({pos_x,pos_y-y_direct});
     }else{

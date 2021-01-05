@@ -21,9 +21,10 @@
 #include <list>
 #include <type_traits>
 #include <fstream>
+#include <algorithm>
 
-const int width = 20;
-const int height = 20;
+const int width = 80;
+const int height = 80;
 
 class Agent {
 public:
